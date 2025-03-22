@@ -1,4 +1,4 @@
-# Linux-Server-
+# Linux-Server
 Configuration of Linux Server
 
 # DHCP Server Configuration: 
