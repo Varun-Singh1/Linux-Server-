@@ -70,23 +70,23 @@ Open the DHCP configuration file to edit it by reference from example file.
    max-lease-time 7200;
    }
 # 11. Check and Start DHCP Services: 
-- Check Service Status :
+Check Service Status :
 - ```bash
   systemctl status dhcpd
-- Start Service:
+Start Service:
 - ```bash
   systemctl start dhcpd
-- Restart Service:
+Restart Service:
 - ```bash
   systemctl restart dhcpd
-- Enable Service to Start at boot
+Enable Service to Start at boot
 - ```bash
   systemctl enable dhcp
 # 12. Check Open Ports:
--Check which Ports are Open and Listening.
+Check which Ports are Open and Listening.
 - ```bash
   netstat -nltup
-- Check if DHCP ports are Open. 
+Check if DHCP ports are Open. 
 - ```bash
   netstat -nltup | grep dhcp
 # 13. Update Firewall Rule:
