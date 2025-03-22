@@ -1,5 +1,6 @@
 # Linux-Server-
 Configuration of Linux Server
+
 # DHCP Server Configuration: 
 This document provides step-by-step guide for DHCP Server Configuration 
 # 1. Check Availability of Repositories: 
@@ -44,15 +45,72 @@ display the example configuration file for dhcp configuration.
 Open the DHCP configuration file to edit it by reference from example file.
 - ```bash
   vim /etc/dhcp/dhcpd.conf
-# configuration will look like this 
-- ```bash
+# Configuration will look like this:  
+-  ```bash
    authoritative;
-  subnet 192.168.31.0 netmask 255.255.255.0{
-  range 192.168.31.32 192.168.31.246;
-  option routers 192.168.31.1;
-  option domain-name-servers 8.8.8.8, 8.8.4.4;
-  option broadcast-address 192.168.31.255;
-  default-lease-time 600;max-lease-time 7200;
-  }
+   #Specify Network Address and Subnet Mask
+   subnet 192.168.31.0 netmask 255.255.255.0{
+   
+   #Specify the IP Address range for lease
+   range 192.168.31.32 192.168.31.246;
+   
+   #Specify Default Gateway
+   option routers 192.168.31.1;
+   
+   #DNS server for name resolution
+   option domain-name-servers 8.8.8.8, 8.8.4.4;
+   
+   #Specify Broadcast Address
+   option broadcast-address 192.168.31.255;
+   
+   #Default lease Time
+   default-lease-time 600;
+   
+   #Max Lease Time
+   max-lease-time 7200;
+   }
+# 11. Check and Start DHCP Services: 
+- Check Service Status :
+- ```bash
+  systemctl status dhcpd
+- Start Service:
+- ```bash
+  systemctl start dhcpd
+- Restart Service:
+- ```bash
+  systemctl restart dhcpd
+- Enable Service to Start at boot
+- ```bash
+  systemctl enable dhcp
+# 12. Check Open Ports:
+-Check which Ports are Open and Listening.
+- ```bash
+  netstat -nltup
+- Check if DHCP ports are Open. 
+- ```bash
+  netstat -nltup | grep dhcp
+# 13. Update Firewall Rule:
+- Open DHCP Ports in firewall
+  allow dhcp traffic through firewalld:
+  - ```bash
+    firewall-cmd --add-port=67/udp --permanent
+- Reload Firewall:
+  Reload the firewall to apply changes:
+  - ```bash
+    firewall-cmd --reload
+- Verify Firewall Rule:
+  Assure DHCP port is open or not:
+  - ```bash
+    firewall-cmd --list-ports
+  Check detailed firewall configuration
+  - ```bash
+    firewall-cmd --list-all
+# 14. Check DHCP Leases: 
+ - Display current DHCP leases:
+ - ```bash
+   cat /var/lib/dhcpd/dhcpd.leases
+  
+
+
 
   
