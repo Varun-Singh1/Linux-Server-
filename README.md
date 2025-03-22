@@ -116,7 +116,7 @@ Check if DHCP ports are Open.
 # 14. Check DHCP Leases: 
  - Display current DHCP leases:
  - ```bash
-   cat /var/lib/dhcpd/dhcpd.leases
+   cat /var/lib/dhcpd/dhcpd.leases 
   
 
 
