@@ -14,7 +14,7 @@ check it by rpm and grep command.
 # 3. Install DHCP Server: 
 Install DHCP Server package
 - ```bash
-  yum install dhcp-server.*86_64
+  yum install dhcp-server.x86_64
 # 4. Verify Installation: 
 Check if DHCP Server packages are installed or not.
 - ```bash
