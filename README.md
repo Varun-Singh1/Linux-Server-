@@ -19,6 +19,7 @@ Install DHCP Server package
 Check if DHCP Server packages are installed or not.
 - ```bash
   rpm -qa | grep dhcp
+- ```bash
   rpm -qa | grep dhcp-server
 # 5. Detailed Information about DHCP Server: 
 Display Detailled information about the installed DHCP Server packages.
@@ -40,6 +41,7 @@ List all the files included with DHCP Server in its packages.
 display the example configuration file for dhcp configuration.
 - ```bash
   vim /user/share/doc/dhcp-server/dhcpd.conf.example
+- ```bash
   cat /user/share/doc/dhcp-server/dhcpd.conf.example | less
 # 10. Edit the configuration file: 
 Open the DHCP configuration file to edit it by reference from example file.
@@ -47,7 +49,12 @@ Open the DHCP configuration file to edit it by reference from example file.
   vim /etc/dhcp/dhcpd.conf
 # Configuration will look like this:  
 -  ```bash
-   authoritative;
+   ## DHCP Server Configuration file.
+   #   see /usr/share/doc/dhcp-server/dhcpd.conf.example
+   #   see dhcpd.conf(5) man page
+
+    authoritative;
+   
    #Specify Network Address and Subnet Mask
    subnet 192.168.31.0 netmask 255.255.255.0{
    
@@ -69,6 +76,7 @@ Open the DHCP configuration file to edit it by reference from example file.
    #Max Lease Time
    max-lease-time 7200;
    }
+   
 # 11. Check and Start DHCP Services: 
 Check Service Status :
 - ```bash
